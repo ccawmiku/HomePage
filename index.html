@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NAS 服务导航</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; width: 100%; font-family: 'Segoe UI','Microsoft YaHei',sans-serif; }
+  body { overflow: hidden; background-color: #fff; }
+
+  /* 背景：右侧完整显示 */
+  body {
+    background: url('/BG.PNG') no-repeat right center fixed;
+    background-size: contain;
+    background-color: #fff; /* PC端非背景区域纯白 */
+  }
+
+  /* 粒子层 */
+  #particles {
+    position: fixed; inset: 0;
+    width: 100%; height: 100%;
+    pointer-events: none; z-index: 0;
+  }
+
+  /* 模糊容器，放左边 */
+  .blur-container {
+    position: relative;
+    z-index: 2;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 160px; /* 缩短按钮宽度 */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+
+  /* 页面整体：左右布局 */
+  .layout {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center; /* 默认PC端垂直居中 */
+    padding: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .layout {
+      align-items: flex-start; /* 移动端改成左上角 */
+    }
+    body {
+      background-position: center top;
+      background-size: cover; /* 移动端全屏铺开 */
+    }
+  }
+</style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<div class="layout">
+  <div class="blur-container">
+    <div class="relative inline-flex items-center justify-center group w-full">
+      <div class="absolute inset-0 duration-1000 opacity-60 transition-all bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-400 rounded-lg blur-lg filter group-hover:opacity-100 group-hover:duration-200"></div>
+      <a role="button" id="dsm-link" class="group relative inline-flex items-center justify-center text-sm rounded-lg bg-gray-900 py-2 font-semibold text-white transition-all duration-200 hover:bg-gray-800 hover:shadow-md hover:-translate-y-0.5 hover:shadow-gray-600/30 w-full"
+         href="#" target="_blank">DSM</a>
+    </div>
+
+    <div class="relative inline-flex items-center justify-center group w-full">
+      <div class="absolute inset-0 duration-1000 opacity-60 transition-all bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-400 rounded-lg blur-lg filter group-hover:opacity-100 group-hover:duration-200"></div>
+      <a role="button" id="homebox-link" class="group relative inline-flex items-center justify-center text-sm rounded-lg bg-gray-900 py-2 font-semibold text-white transition-all duration-200 hover:bg-gray-800 hover:shadow-md hover:-translate-y-0.5 hover:shadow-gray-600/30 w-full"
+         href="#" target="_blank">Homebox</a>
+    </div>
+
+    <div class="relative inline-flex items-center justify-center group w-full">
+      <div class="absolute inset-0 duration-1000 opacity-60 transition-all bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-400 rounded-lg blur-lg filter group-hover:opacity-100 group-hover:duration-200"></div>
+      <a role="button" id="jellyfin-link" class="group relative inline-flex items-center justify-center text-sm rounded-lg bg-gray-900 py-2 font-semibold text-white transition-all duration-200 hover:bg-gray-800 hover:shadow-md hover:-translate-y-0.5 hover:shadow-gray-600/30 w-full"
+         href="#" target="_blank">Jellyfin</a>
+    </div>
+
+    <div class="relative inline-flex items-center justify-center group w-full">
+      <div class="absolute inset-0 duration-1000 opacity-60 transition-all bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-400 rounded-lg blur-lg filter group-hover:opacity-100 group-hover:duration-200"></div>
+      <a role="button" id="ddns-go-link" class="group relative inline-flex items-center justify-center text-sm rounded-lg bg-gray-900 py-2 font-semibold text-white transition-all duration-200 hover:bg-gray-800 hover:shadow-md hover:-translate-y-0.5 hover:shadow-gray-600/30 w-full"
+         href="#" target="_blank">DDNS-GO</a>
+    </div>
+
+    <div class="relative inline-flex items-center justify-center group w-full">
+      <div class="absolute inset-0 duration-1000 opacity-60 transition-all bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-400 rounded-lg blur-lg filter group-hover:opacity-100 group-hover:duration-200"></div>
+      <a role="button" id="router-link" class="group relative inline-flex items-center justify-center text-sm rounded-lg bg-gray-900 py-2 font-semibold text-white transition-all duration-200 hover:bg-gray-800 hover:shadow-md hover:-translate-y-0.5 hover:shadow-gray-600/30 w-full"
+         href="#" target="_blank">路由器管理页</a>
+    </div>
+        <div class="relative inline-flex items-center justify-center group w-full">
+      <div class="absolute inset-0 duration-1000 opacity-60 transition-all bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-400 rounded-lg blur-lg filter group-hover:opacity-100 group-hover:duration-200"></div>
+      <a role="button" id="status-link" class="group relative inline-flex items-center justify-center text-sm rounded-lg bg-gray-900 py-2 font-semibold text-white transition-all duration-200 hover:bg-gray-800 hover:shadow-md hover:-translate-y-0.5 hover:shadow-gray-600/30 w-full"
+         href="#" target="_blank">在线状态</a>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // ===== ❗️❗️ 请在这里配置你的服务地址 ❗️❗️ =====
+  const services = [
+    { id: 'dsm-link',      intranet: 'http://192.168.1.2:5000',   extranet: 'https://dsm.yaemiko.icu' },
+    { id: 'homebox-link',  intranet: 'http://192.168.1.2:3300',   extranet: 'https://homebox.yaemiko.icu' },
+    { id: 'jellyfin-link', intranet: 'http://192.168.1.2:8096',   extranet: 'https://jellyfin.yaemiko.icu' },
+    { id: 'ddns-go-link',  intranet: 'http://192.168.1.2:9876',   extranet: 'https://ddns.yaemiko.icu' },
+    { id: 'router-link',   intranet: 'http://192.168.1.1',        extranet: 'https://rt2.yaemiko.icu' },
+    { id: 'status-link',   intranet: 'https://status.yaemiko.icu',   extranet: 'https://status.yaemiko.icu' }
+  ];
+
+  /**
+   * 判断当前是否为内网环境
+   * @returns {boolean}
+   */
+  function isLocalNetwork() {
+    const hostname = window.location.hostname;
+    return (
+      hostname === 'localhost' ||
+      hostname === '127.0.0.1' ||
+      hostname.startsWith('192.168.') ||
+      hostname.startsWith('10.') ||
+      /^172\.(1[6-9]|2[0-9]|3[0-1])\./.test(hostname)
+    );
+  }
+
+  const isLocal = isLocalNetwork();
+
+  // 遍历服务列表，更新每个链接的 href 属性
+  services.forEach(service => {
+    const linkElement = document.getElementById(service.id);
+    if (linkElement) {
+      linkElement.href = isLocal ? service.intranet : service.extranet;
+    }
+  });
+});
+</script>
+
+<script>
+/* ===== 粒子背景（轻量） ===== */
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+function resizeCanvas(){ canvas.width = innerWidth; canvas.height = innerHeight; }
+resizeCanvas(); addEventListener('resize', resizeCanvas);
+
+const particles = [];
+for (let i=0; i<60; i++){
+  particles.push({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    r: Math.random()*3+1,
+    dx: (Math.random()-0.5)*0.6,
+    dy: (Math.random()-0.5)*0.6,
+    a: Math.random()*0.45+0.25
+  });
+}
+(function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  for (const p of particles){
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle = `rgba(255,182,193,${p.a})`;
+    ctx.fill();
+    p.x += p.dx; p.y += p.dy;
+    if (p.x<-20) p.x=canvas.width+20; if (p.x>canvas.width+20) p.x=-20;
+    if (p.y<-20) p.y=canvas.height+20; if (p.y>canvas.height+20) p.y=-20;
+  }
+  requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
