@@ -93,12 +93,17 @@
     <div class="relative inline-flex items-center justify-center group w-full">
       <div class="absolute inset-0 duration-1000 opacity-60 transition-all bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-400 rounded-lg blur-lg filter group-hover:opacity-100 group-hover:duration-200"></div>
       <a role="button" id="router-link" class="group relative inline-flex items-center justify-center text-sm rounded-lg bg-gray-900 py-2 font-semibold text-white transition-all duration-200 hover:bg-gray-800 hover:shadow-md hover:-translate-y-0.5 hover:shadow-gray-600/30 w-full"
-         href="#" target="_blank">路由器管理页</a>
+         href="#" target="_blank">路由器</a>
     </div>
         <div class="relative inline-flex items-center justify-center group w-full">
       <div class="absolute inset-0 duration-1000 opacity-60 transition-all bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-400 rounded-lg blur-lg filter group-hover:opacity-100 group-hover:duration-200"></div>
       <a role="button" id="status-link" class="group relative inline-flex items-center justify-center text-sm rounded-lg bg-gray-900 py-2 font-semibold text-white transition-all duration-200 hover:bg-gray-800 hover:shadow-md hover:-translate-y-0.5 hover:shadow-gray-600/30 w-full"
          href="#" target="_blank">在线状态</a>
+    </div>
+        <div class="relative inline-flex items-center justify-center group w-full">
+      <div class="absolute inset-0 duration-1000 opacity-60 transition-all bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-400 rounded-lg blur-lg filter group-hover:opacity-100 group-hover:duration-200"></div>
+      <a role="button" id="qinglong-link" class="group relative inline-flex items-center justify-center text-sm rounded-lg bg-gray-900 py-2 font-semibold text-white transition-all duration-200 hover:bg-gray-800 hover:shadow-md hover:-translate-y-0.5 hover:shadow-gray-600/30 w-full"
+         href="#" target="_blank">青龙面板</a>
     </div>
   </div>
 </div>
@@ -113,6 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { id: 'ddns-go-link',  intranet: 'http://192.168.1.2:9876',   extranet: 'https://ddns.yaemiko.icu' },
     { id: 'router-link',   intranet: 'http://192.168.1.1',        extranet: 'https://rt2.yaemiko.icu' },
     { id: 'status-link',   intranet: 'https://status.yaemiko.icu',   extranet: 'https://status.yaemiko.icu' }
+    { id: 'qinglong-link', intranet: 'http://192.168.1.2:5700',   extranet: 'https://qinglong.yaemiko.icu' }
   ];
 
   /**
