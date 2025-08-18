@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>NAS 服务导航(代理)</title>
+<title>NAS 服务导航（Workers）</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -50,7 +50,7 @@
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     display: block;
   }
-  @media (max-width: 768px) {
+  @media (max-width: 1500px) {
     .layout {
       align-items: flex-start; /* 移动端改成左上角 */
     }
@@ -122,9 +122,9 @@
   <!-- 新增 status 卡片，仅PC端显示 -->
   <div class="status-card">
     <iframe src="https://status.yaemiko.icu/"
-            width="350"
-            height="480"
-            style="border-radius:16px; border:none; box-shadow:0 6px 20px rgba(0,0,0,0.15);"
+            width="440"
+            height="810"
+            style="border-radius:0; border:none; box-shadow:0 0 0 rgba(0,0,0,0.15);"
             title="在线状态"></iframe>
   </div>
 </div>
